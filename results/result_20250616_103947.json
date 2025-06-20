@@ -1,0 +1,2339 @@
+{
+  "results": [
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "MDS",
+      "selected": [
+        [
+          0,
+          4,
+          8,
+          12,
+          13,
+          29,
+          30,
+          33,
+          39,
+          43,
+          46,
+          50,
+          56,
+          63,
+          65,
+          70,
+          76,
+          78,
+          83,
+          84,
+          88,
+          91,
+          92,
+          93,
+          99,
+          100,
+          101,
+          106,
+          110,
+          112,
+          113,
+          114,
+          117,
+          121,
+          123,
+          124,
+          129,
+          133,
+          142,
+          145,
+          152,
+          154,
+          155,
+          160,
+          163,
+          169,
+          170,
+          172,
+          174,
+          175,
+          178,
+          180,
+          185,
+          190,
+          202,
+          203,
+          205,
+          215,
+          218,
+          220,
+          224,
+          227,
+          230,
+          232,
+          237,
+          238,
+          241,
+          244,
+          245,
+          257,
+          258,
+          263,
+          276,
+          277,
+          280,
+          286,
+          289,
+          290,
+          291,
+          298,
+          299,
+          305,
+          307,
+          311,
+          314,
+          317,
+          319,
+          322,
+          324,
+          328,
+          334,
+          336,
+          340,
+          341,
+          345,
+          348,
+          352,
+          355,
+          357,
+          364,
+          369,
+          372,
+          379,
+          380,
+          389,
+          397,
+          404,
+          407,
+          417,
+          421,
+          425,
+          430,
+          434,
+          435,
+          436,
+          438,
+          448,
+          451,
+          458,
+          463,
+          466,
+          470,
+          477,
+          486,
+          487,
+          489,
+          490,
+          491,
+          493,
+          496,
+          499,
+          502,
+          512,
+          515,
+          516,
+          521,
+          528,
+          534,
+          536,
+          542,
+          548,
+          552,
+          553,
+          555,
+          562,
+          566,
+          568,
+          573,
+          574,
+          577,
+          579,
+          584,
+          587,
+          588,
+          589,
+          593,
+          595,
+          597,
+          598,
+          602,
+          604,
+          605,
+          607,
+          608,
+          611,
+          613,
+          614,
+          615,
+          620,
+          632,
+          634,
+          637,
+          638,
+          641,
+          642,
+          664,
+          668,
+          669,
+          678,
+          682,
+          690,
+          696,
+          707,
+          709,
+          711,
+          713,
+          722,
+          723,
+          725,
+          726,
+          727,
+          730,
+          733,
+          734,
+          737,
+          738,
+          740,
+          741,
+          745,
+          749,
+          752,
+          753,
+          754,
+          760,
+          767,
+          768,
+          769,
+          770,
+          780,
+          784,
+          786,
+          794,
+          795,
+          797,
+          802,
+          803,
+          809,
+          812,
+          814,
+          815,
+          823,
+          825,
+          826,
+          829,
+          830,
+          831,
+          835,
+          838,
+          839,
+          845,
+          848,
+          861,
+          865,
+          871,
+          872,
+          874,
+          880,
+          882,
+          885,
+          887,
+          889,
+          894,
+          900,
+          902,
+          905,
+          909,
+          918,
+          920,
+          921,
+          922,
+          924,
+          928,
+          934,
+          943,
+          946,
+          947,
+          953,
+          956,
+          958,
+          959,
+          960,
+          961,
+          969,
+          973,
+          974,
+          983,
+          986,
+          988,
+          991,
+          993,
+          997,
+          1001,
+          1004,
+          1006,
+          1009,
+          1011,
+          1018,
+          1019,
+          1028,
+          1030,
+          1033,
+          1036,
+          1037,
+          1039,
+          1042,
+          1054,
+          1055,
+          1057,
+          1061,
+          1063,
+          1064,
+          1073,
+          1078
+        ],
+        [
+          17,
+          24,
+          25,
+          32,
+          34,
+          35,
+          41,
+          48,
+          51,
+          66,
+          69,
+          77,
+          79,
+          86,
+          89,
+          95,
+          96,
+          104,
+          105,
+          114,
+          123,
+          127,
+          131,
+          134,
+          149,
+          150,
+          156,
+          157,
+          159,
+          161,
+          167,
+          168,
+          169,
+          170,
+          186,
+          210,
+          222,
+          223,
+          231,
+          232,
+          233,
+          248,
+          249,
+          256,
+          259,
+          274,
+          275,
+          278,
+          294,
+          303,
+          312,
+          314,
+          320,
+          350,
+          356,
+          358,
+          363,
+          366,
+          375,
+          381,
+          384,
+          387,
+          390,
+          393,
+          401,
+          413,
+          419,
+          428,
+          429,
+          430,
+          435,
+          444,
+          446,
+          449,
+          463,
+          464,
+          473,
+          474,
+          484,
+          492,
+          508,
+          510,
+          511,
+          517,
+          537,
+          545,
+          561,
+          563,
+          581,
+          584,
+          600,
+          606,
+          615,
+          617,
+          619,
+          624,
+          629,
+          633,
+          635,
+          636,
+          645,
+          647,
+          655,
+          663,
+          672,
+          678,
+          679,
+          683,
+          689,
+          691,
+          700,
+          708,
+          710,
+          714,
+          715,
+          716,
+          717,
+          735,
+          743,
+          746,
+          750,
+          761,
+          762,
+          763,
+          764,
+          768,
+          771,
+          778,
+          779,
+          788,
+          789,
+          791,
+          798,
+          804,
+          805,
+          807,
+          813,
+          816,
+          817,
+          834,
+          836,
+          842,
+          851,
+          852,
+          854,
+          867,
+          869,
+          881,
+          888,
+          898,
+          899,
+          906,
+          908,
+          931,
+          932,
+          935,
+          941,
+          942,
+          944,
+          948,
+          951,
+          962,
+          970,
+          982,
+          984,
+          988,
+          989,
+          994,
+          998,
+          1005,
+          1013,
+          1016,
+          1020,
+          1022,
+          1032,
+          1034,
+          1040,
+          1047,
+          1050,
+          1051,
+          1058,
+          1059,
+          1060,
+          1061,
+          1067,
+          1068,
+          1070,
+          1077,
+          1078
+        ],
+        [
+          10,
+          20,
+          22,
+          31,
+          67,
+          85,
+          94,
+          98,
+          119,
+          141,
+          146,
+          193,
+          201,
+          247,
+          253,
+          254,
+          283,
+          295,
+          313,
+          318,
+          367,
+          409,
+          442,
+          454,
+          483,
+          518,
+          525,
+          544,
+          564,
+          565,
+          590,
+          616,
+          640,
+          651,
+          665,
+          694,
+          706,
+          724,
+          739,
+          759,
+          772,
+          787,
+          832,
+          850,
+          856,
+          857,
+          858,
+          860,
+          870,
+          877,
+          896,
+          937,
+          955,
+          967,
+          976,
+          978,
+          1021,
+          1045,
+          1046,
+          1075
+        ],
+        [
+          146,
+          192,
+          262,
+          296,
+          316,
+          392,
+          519,
+          625,
+          699,
+          721,
+          747,
+          782,
+          811,
+          827,
+          844,
+          859,
+          985,
+          1048
+        ],
+        [
+          27,
+          54,
+          108,
+          126,
+          135,
+          143,
+          144,
+          148,
+          153,
+          162,
+          189,
+          198,
+          216,
+          225,
+          234,
+          252,
+          261,
+          288,
+          306,
+          315,
+          342,
+          351,
+          360,
+          370,
+          396,
+          414,
+          432,
+          441,
+          450,
+          459,
+          485,
+          495,
+          504,
+          513,
+          531,
+          533,
+          549,
+          558,
+          559,
+          576,
+          585,
+          594,
+          603,
+          612,
+          648,
+          657,
+          695,
+          702,
+          729,
+          731,
+          756,
+          774,
+          783,
+          810,
+          828,
+          846,
+          855,
+          873,
+          893,
+          901,
+          911,
+          927,
+          945,
+          954,
+          999,
+          1026,
+          1044,
+          1053,
+          1062,
+          1071
+        ],
+        [
+          52,
+          73,
+          139,
+          343,
+          374,
+          426,
+          523,
+          596,
+          601,
+          919
+        ],
+        [
+          9,
+          14,
+          59,
+          60,
+          395,
+          443,
+          618,
+          656,
+          676,
+          701,
+          744,
+          897,
+          965,
+          1007,
+          1029,
+          1041
+        ],
+        [
+          132,
+          179,
+          213,
+          273,
+          386,
+          424,
+          437,
+          482,
+          509,
+          541,
+          586,
+          685,
+          692,
+          712,
+          833,
+          851,
+          923
+        ],
+        [
+          6,
+          26,
+          42,
+          44,
+          49,
+          53,
+          68,
+          75,
+          87,
+          111,
+          140,
+          183,
+          187,
+          195,
+          211,
+          246,
+          266,
+          284,
+          292,
+          301,
+          318,
+          323,
+          349,
+          365,
+          377,
+          402,
+          410,
+          418,
+          501,
+          526,
+          554,
+          592,
+          644,
+          665,
+          681,
+          719,
+          732,
+          800,
+          819,
+          870,
+          915,
+          916,
+          938,
+          971,
+          975,
+          1049
+        ],
+        [
+          62,
+          177,
+          264,
+          265,
+          310,
+          478,
+          480,
+          481,
+          519,
+          580,
+          704,
+          758,
+          849,
+          879,
+          913,
+          917,
+          950,
+          985,
+          996,
+          1003,
+          1012
+        ],
+        [
+          5,
+          7,
+          10,
+          11,
+          20,
+          21,
+          38,
+          55,
+          98,
+          109,
+          119,
+          128,
+          136,
+          141,
+          146,
+          148,
+          165,
+          166,
+          173,
+          188,
+          191,
+          196,
+          199,
+          200,
+          206,
+          209,
+          212,
+          214,
+          217,
+          240,
+          247,
+          250,
+          253,
+          254,
+          281,
+          282,
+          302,
+          308,
+          325,
+          326,
+          329,
+          333,
+          344,
+          353,
+          361,
+          362,
+          370,
+          394,
+          398,
+          406,
+          412,
+          416,
+          442,
+          452,
+          461,
+          468,
+          472,
+          479,
+          485,
+          488,
+          498,
+          524,
+          525,
+          532,
+          533,
+          543,
+          550,
+          551,
+          559,
+          560,
+          565,
+          569,
+          599,
+          640,
+          646,
+          651,
+          657,
+          658,
+          659,
+          666,
+          667,
+          675,
+          677,
+          686,
+          694,
+          695,
+          718,
+          731,
+          736,
+          739,
+          742,
+          747,
+          751,
+          755,
+          757,
+          766,
+          776,
+          777,
+          783,
+          792,
+          793,
+          799,
+          824,
+          846,
+          847,
+          855,
+          856,
+          857,
+          862,
+          866,
+          868,
+          883,
+          892,
+          893,
+          910,
+          911,
+          939,
+          940,
+          952,
+          955,
+          964,
+          987,
+          992,
+          995,
+          1000,
+          1014,
+          1017,
+          1027,
+          1045,
+          1046,
+          1052
+        ]
+      ]
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "cnae9",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "dermatology",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "har",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "iris",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "olive",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "svhn",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "weather",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E1",
+      "dataset": "world12d",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "cnae9",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "dermatology",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "har",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "iris",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "olive",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "svhn",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "weather",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E2",
+      "dataset": "world12d",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "cnae9",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "dermatology",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "har",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "iris",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "olive",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "svhn",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "weather",
+      "projection": "tSNExUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "MDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "MDSxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "MDSxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "PCA",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "PCAxMDS",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "PCAxUMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "PCAxtSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "UMAP",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "tSNE",
+      "selected": []
+    },
+    {
+      "experiment": "E3",
+      "dataset": "world12d",
+      "projection": "tSNExUMAP",
+      "selected": []
+    }
+  ],
+  "timestamp": "2025-06-16T10:39:47.774Z"
+}

@@ -1,0 +1,122 @@
+{
+  "cnae9": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/cnae9/labels.npy"
+  },
+  "dermatology": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/dermatology/labels.npy"
+  },
+  "har": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/har/labels.npy"
+  },
+  "iris": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/iris/labels.npy"
+  },
+  "olive": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/olive/labels.npy"
+  },
+  "svhn": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/svhn/labels.npy"
+  },
+  "weather": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/weather/labels.npy"
+  },
+  "world12d": {
+    "projections": [
+      "PCA",
+      "MDS",
+      "tSNE",
+      "UMAP",
+      "PCAxMDS",
+      "PCAxtSNE",
+      "PCAxUMAP",
+      "MDSxtSNE",
+      "MDSxUMAP",
+      "tSNExUMAP"
+    ],
+    "label_file": "Projections/world12d/labels.npy"
+  }
+}
