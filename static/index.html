@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:,">
   <meta charset="UTF-8">
   <title>Visual Analytics Study</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
+    body { font-family: sans-serif; padding: 20px; max-width: 900px; margin: auto; }
     #controls { margin-bottom: 20px; display: flex; gap: 20px; align-items: center; }
-    svg { border: 1px solid #ccc; }
+    #description-panel { margin-bottom: 20px; background: #f5f5f5; padding: 12px; border: 1px solid #ccc; }
+    svg { border: 1px solid #ccc; display: block; margin: auto; }
     .selected { stroke: black; stroke-width: 2; }
+    #button-row { display: flex; flex-direction: row; gap: 12px; margin-top: 10px; justify-content: center; }
+    #e5-container input { margin-left: 10px; width: 40px; }
+    #e5-container label { margin-right: 15px; display: inline-block; width: 200px; }
+    #status { margin-top: 20px; font-weight: bold; text-align: center; }
   </style>
 </head>
 <body>
-<div id="controls">
-  <span id="task-desc">Loading...</span>
-  <span id="progress-counter"></span>
-</div>
-<div id="button-row">
-  <button id="reset">Reset</button>
-  <button id="next">Next</button>
-  <button id="submit-now">Submit Now</button>
-</div>
+  <div id="description-panel">
+    <h3>Task Instructions</h3>
+    <p id="task-desc">Loading...</p>
+  </div>
+
+  <div id="controls">
+    <span id="progress-counter">Loading...</span>
+  </div>
+
+  <div id="button-row">
+    <button id="reset">Reset</button>
+    <button id="next">Next</button>
+    <button id="submit-now">Submit Now</button>
+  </div>
+
   <svg id="viz" width="600" height="600"></svg>
+
   <div id="e5-container" style="display:none; margin-top:30px;"></div>
   <div id="status"></div>
+
   <script src="main.js"></script>
 </body>
 </html>
-
-<style>
-  #button-row {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    margin-top: 10px;
-  }
-</style>

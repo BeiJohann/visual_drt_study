@@ -1,0 +1,108 @@
+<div id="intro-container" style="max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.6;">
+  <h2>Welcome to the Visual Analytics Study</h2>
+
+  <p>
+    This study investigates how humans perceive and interpret 2D scatter plots derived from high-dimensional data using various dimensionality reduction methods.
+    Your participation will help researchers understand which visual representations are most effective for identifying patterns and structures in complex data.
+  </p>
+
+  <h3>Study Procedure</h3>
+  <ul>
+    <li>The study will take approximately <b>30–40 minutes</b> in a single session.</li>
+    <li><b>Accuracy is more important than speed</b> — take your time to answer carefully.</li>
+    <li>The study must be completed in one sitting, but short breaks are allowed (e.g., for restroom use).</li>
+    <li>You can click the <b>Pause</b> button during the study to temporarily hide the screen and resume later.</li>
+  </ul>
+
+  <h3>What is a Scatter Plot?</h3>
+  <p>
+    A scatter plot is a two-dimensional visualization where each point represents one data item. The distance between points reflects their similarity in the original high-dimensional space:
+    similar items appear close together, while dissimilar items appear farther apart.
+  </p>
+  <div style="text-align: center;">
+    <img src="penguins_poorly_separated_color.png"
+         alt="Scatter plot example"
+         style="width: 80%; max-width: 480px; display: block; margin: 10px auto;" />
+    <p style="font-size: 0.9em; color: #555; max-width: 600px; margin: auto;">
+      Example from the Palmer Penguins dataset, which contains measurements for three penguin species from the Antarctic.  
+      Features like body mass and flipper length can overlap between species.
+    </p>
+  </div>
+
+  <h3>What are Clusters?</h3>
+  <p>
+    Clusters are groups of points that form visually coherent regions in the scatter plot. These clusters often represent similar items in the underlying data.
+    You can recognize them by looking for <b>dense regions</b> that are spatially separated from others. 
+    Clusters can vary in:
+    <ul>
+      <li><b>Size</b>: the number of points in the cluster</li>
+      <li><b>Density</b>: how closely packed the points are within a given area</li>
+      <li><b>Shape</b>: clusters can be round, elongated, or irregular</li>
+    </ul>
+  </p>
+  <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 240px; max-width: 380px;">
+      <img src="penguins_well_separated_color.png" alt="Well-separated clusters color" style="width: 100%;">
+      <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+        Measurements like flipper length and bill length separate penguin species clearly.
+      </p>
+    </div>
+    <div style="flex: 1; min-width: 240px; max-width: 380px;">
+      <img src="penguins_well_separated_gray_select.png" alt="slected-separated clusters color" style="width: 100%;">
+      <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+        Well seperated clusters are easy to identify.
+      </p>
+    </div>
+  </div>
+
+  <h3>Ground Truth vs. Visual Clusters</h3>
+  <p>
+    In many datasets, each data point belongs to a known category — for example, in the Penguin dataset, each penguin is identified as a specific species.
+    These known categories are called the <b>ground truth</b>.
+  </p>
+  <p>
+    However, when looking at a scatter plot, we can only see how points are arranged in two dimensions. 
+    <b>Visual clusters</b> are the groups that can be recognized directly from the plot, based solely on the spatial arrangement of points — regardless of their true category.
+  </p>
+  <p>
+    In this study, all points will be shown in <b>gray</b> without category labels. 
+    This means you will need to identify clusters purely from their visible structure, without any hints from the original data classes.
+  </p>
+
+    <!-- Vier Bilder in zwei Reihen -->
+  <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px;">
+    <img src="penguins_poorly_separated_color.png" alt="Poorly-separated clusters color" style="width: 48%; max-width: 400px;">
+    <img src="penguins_poorly_separated_gray_selected.png" alt="penguins poorly separated gray_selected" style="width: 48%; max-width: 400px;">
+  </div>
+
+  <h3>Using the Lasso Tool</h3>
+  <ul>
+    <li>Click and hold the left mouse button to start drawing a selection shape.</li>
+    <li>Draw around the points you wish to select, then release the mouse button to complete the selection.</li>
+    <li>Click the <b>Reset</b> button to clear your current selection.</li>
+    <li>A point can belong to only one cluster. If you lasso a point again, it will be removed from its previous cluster and assigned to the new one.</li>
+    <li>Not all points have to be in a cluster — leave unclustered points as they are if they don't clearly belong to a group.</li>
+  </ul>
+
+  <h3>What Will You Be Doing?</h3>
+  <p>
+    You will be shown several scatter plots and asked to perform different tasks:
+  </p>
+  <ul>
+    <li>Select clearly visible clusters using the lasso tool</li>
+    <li>Identify the cluster containing a highlighted (red) point</li>
+    <li>Select the cluster closest to a reference cluster</li>
+    <li>Choose the most densely packed cluster</li>
+    <li>Rank all projections based on clarity and visual structure</li>
+  </ul>
+
+
+  <p>
+    Each task block starts with an example to help you understand the task. The full study takes approximately <b>30–40 minutes</b>.
+    Your responses will be recorded anonymously.
+  </p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <button id="start-btn" style="font-size: 1.1em; padding: 10px 25px;">Start the Study</button>
+  </div>
+</div>

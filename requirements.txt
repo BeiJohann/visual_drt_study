@@ -1,7 +1,9 @@
 flask
 numpy
-scikit-learn
-umap-learn
-pandas
-scipy>=1.10,<2.0
 gunicorn
+Flask
+numpy
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
