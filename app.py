@@ -46,9 +46,23 @@ def load_data(dataset, projection):
         print(f" Labels: {label_path}")
 
         X = np.load(proj_path).tolist()
-        y = np.load(label_path).tolist()
+        # Load labels.npy as dict so we can access worst_point_index
+        labels_data = np.load(label_path, allow_pickle=True).item()
+        y = labels_data["labels"]
 
-        return jsonify({"X": X, "y": y})
+        worst_idx = labels_data.get("worst_point_index", None)
+        if worst_idx is None or not isinstance(worst_idx, (int, np.integer)):
+            print(f"[WARNING] No valid worst_point_index found for dataset '{dataset}', projection '{projection}'")
+            worst_idx = None
+        elif worst_idx < 0 or worst_idx >= len(X):
+            print(f"[ERROR] worst_point_index {worst_idx} is out of range (0-{len(X)-1})")
+            worst_idx = None
+
+        return jsonify({
+            "X": X,
+            "y": y.tolist() if hasattr(y, "tolist") else y,
+            "worst_point_index": int(worst_idx) if worst_idx is not None else None
+        })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

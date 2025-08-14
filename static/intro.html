@@ -17,14 +17,14 @@
   <h3>What is a Scatter Plot?</h3>
   <p>
     A scatter plot is a two-dimensional visualization where each point represents one data item. The distance between points reflects their similarity in the original high-dimensional space:
-    similar items appear close together, while dissimilar items appear farther apart.
+    similar items appear close together, while dissimilar items appear farther apart. We use the <a href="https://archive.ics.uci.edu/dataset/690/palmer+penguins-3"> Palmer penguin dataset</a> for all scatterplot in this introduction.
   </p>
   <div style="text-align: center;">
     <img src="penguins_poorly_separated_color.png"
          alt="Scatter plot example"
          style="width: 80%; max-width: 480px; display: block; margin: 10px auto;" />
     <p style="font-size: 0.9em; color: #555; max-width: 600px; margin: auto;">
-      Example from the Palmer Penguins dataset, which contains measurements for three penguin species from the Antarctic.  
+      The Penguins dataset, which contains measurements for three penguin species from the Antarctic.  
       Features like body mass and flipper length can overlap between species.
     </p>
   </div>
@@ -50,7 +50,7 @@
     <div style="flex: 1; min-width: 240px; max-width: 380px;">
       <img src="penguins_well_separated_gray_select.png" alt="slected-separated clusters color" style="width: 100%;">
       <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
-        Well seperated clusters are easy to identify.
+        Well-separated clusters are easy to identify. This could be a possible selection for the first task in the study.
       </p>
     </div>
   </div>
@@ -66,7 +66,7 @@
   </p>
   <p>
     In this study, all points will be shown in <b>gray</b> without category labels. 
-    This means you will need to identify clusters purely from their visible structure, without any hints from the original data classes.
+    This means you will need to identify clusters based off their visible structure, without any hints from the original data classes. The examples shown are possible clusters selected from a human perception. 
   </p>
 
     <!-- Vier Bilder in zwei Reihen -->
@@ -81,7 +81,7 @@
     <li>Draw around the points you wish to select, then release the mouse button to complete the selection.</li>
     <li>Click the <b>Reset</b> button to clear your current selection.</li>
     <li>A point can belong to only one cluster. If you lasso a point again, it will be removed from its previous cluster and assigned to the new one.</li>
-    <li>Not all points have to be in a cluster — leave unclustered points as they are if they don't clearly belong to a group.</li>
+    <li><b>Not all points have to be in a cluster</b> — leave unclustered points as they are if they don't clearly belong to a group.</li>
   </ul>
 
   <h3>What Will You Be Doing?</h3>

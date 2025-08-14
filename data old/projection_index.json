@@ -1,0 +1,34 @@
+{
+  "cnae9": {
+    "label_file": "Projections/cnae9/labels.npy",
+    "time_seconds": 191.7
+  },
+  "dermatology": {
+    "label_file": "Projections/dermatology/labels.npy",
+    "time_seconds": 18.56
+  },
+  "har": {
+    "label_file": "Projections/har/labels.npy",
+    "time_seconds": 103.84
+  },
+  "iris": {
+    "label_file": "Projections/iris/labels.npy",
+    "time_seconds": 9.42
+  },
+  "mnist64": {
+    "label_file": "Projections/mnist64/labels.npy",
+    "time_seconds": 187.69
+  },
+  "olive": {
+    "label_file": "Projections/olive/labels.npy",
+    "time_seconds": 50.08
+  },
+  "weather": {
+    "label_file": "Projections/weather/labels.npy",
+    "time_seconds": 31.07
+  },
+  "world12d": {
+    "label_file": "Projections/world12d/labels.npy",
+    "time_seconds": 10.96
+  }
+}
