@@ -89,9 +89,11 @@ def submit():
     try:
         send_email_backup(json_data, filename)
     except Exception as e:
-        print(f"⚠️ Fehler beim E-Mail-Versand: {e}")
+        import traceback
+        print("⚠️ Vollständiger Fehler-Traceback:")
+        traceback.print_exc()   # zeigt dir ALLES im Terminal
         return jsonify({"status": "error", "message": str(e)}), 500
-    return jsonify({"status": "ok"})
+
 
 # === MAIL mit SendGrid ===
 
