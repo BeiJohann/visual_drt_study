@@ -85,7 +85,7 @@ def submit():
     #print(f"✅ Gespeichert: {local_path}")
 
     # Per E-Mail senden
-    
+
     try:
         send_email_backup(json_data, filename)
     except Exception as e:
@@ -130,12 +130,14 @@ def send_email_backup(json_content, filename):
             {
                 "content": encoded_file,
                 "type": "application/json",
-                "filename": filename
+                "filename": filename,
+                "disposition": "attachment"
             }
         ]
     }
 
     response = requests.post(url, headers=headers, json=payload)
+    print("SendGrid response:", response.status_code, response.text)  # Debug
     if response.status_code >= 400:
         raise RuntimeError(f"SendGrid API error: {response.status_code} {response.text}")
     else:
