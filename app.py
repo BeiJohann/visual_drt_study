@@ -6,6 +6,8 @@ import numpy as np
 from email.message import EmailMessage
 import smtplib
 from dotenv import load_dotenv
+import requests  # Für SendGrid REST API
+
 
 # === KONFIGURATION ===
 app = Flask(__name__, static_url_path="", static_folder="static")
