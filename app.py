@@ -89,93 +89,93 @@ def submit():
     try:
         send_email_backup(json_data, filename)
     except Exception as e:
-        import traceback
-        print("⚠️ Vollständiger Fehler-Traceback:")
-        traceback.print_exc()   # zeigt dir ALLES im Terminal
+        print(f"⚠️ Fehler beim E-Mail-Versand: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
+    return jsonify({"status": "ok"})
 
-# === MAIL mit SendGrid ===
 
-def send_email_backup(json_content, filename):
-    SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-    EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
-    EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
+# # === MAIL mit SendGrid ===
 
-    if not SENDGRID_API_KEY:
-        raise ValueError("SENDGRID_API_KEY not set in environment")
+# def send_email_backup(json_content, filename):
+#     SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+#     EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
+#     EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
 
-    # SendGrid API Endpoint
-    url = "https://api.sendgrid.com/v3/mail/send"
+#     if not SENDGRID_API_KEY:
+#         raise ValueError("SENDGRID_API_KEY not set in environment")
 
-    headers = {
-        "Authorization": f"Bearer {SENDGRID_API_KEY}",
-        "Content-Type": "application/json"
-    }
+#     # SendGrid API Endpoint
+#     url = "https://api.sendgrid.com/v3/mail/send"
 
-    # Base64-Encoding für Anhang
-    import base64
-    encoded_file = base64.b64encode(json_content.encode()).decode()
+#     headers = {
+#         "Authorization": f"Bearer {SENDGRID_API_KEY}",
+#         "Content-Type": "application/json"
+#     }
 
-    payload = {
-        "personalizations": [
-            {
-                "to": [{"email": EMAIL_RECEIVER}],
-                "subject": "📊 Visual Study Result JSON"
-            }
-        ],
-        "from": {"email": EMAIL_SENDER},
-        "content": [
-            {"type": "text/plain", "value": "Backup der Studie im JSON-Anhang."}
-        ],
-        "attachments": [
-            {
-                "content": encoded_file,
-                "type": "application/json",
-                "filename": filename,
-                "disposition": "attachment"
-            }
-        ]
-    }
+#     # Base64-Encoding für Anhang
+#     import base64
+#     encoded_file = base64.b64encode(json_content.encode()).decode()
 
-    response = requests.post(url, headers=headers, json=payload)
-    print("SendGrid response:", response.status_code, response.text)  # Debug
-    if response.status_code >= 400:
-        raise RuntimeError(f"SendGrid API error: {response.status_code} {response.text}")
-    else:
-        print("📬 Ergebnis erfolgreich über SendGrid verschickt.")
+#     payload = {
+#         "personalizations": [
+#             {
+#                 "to": [{"email": EMAIL_RECEIVER}],
+#                 "subject": "📊 Visual Study Result JSON"
+#             }
+#         ],
+#         "from": {"email": EMAIL_SENDER},
+#         "content": [
+#             {"type": "text/plain", "value": "Backup der Studie im JSON-Anhang."}
+#         ],
+#         "attachments": [
+#             {
+#                 "content": encoded_file,
+#                 "type": "application/json",
+#                 "filename": filename,
+#                 "disposition": "attachment"
+#             }
+#         ]
+#     }
+
+#     response = requests.post(url, headers=headers, json=payload)
+#     print("SendGrid response:", response.status_code, response.text)  # Debug
+#     if response.status_code >= 400:
+#         raise RuntimeError(f"SendGrid API error: {response.status_code} {response.text}")
+#     else:
+#         print("📬 Ergebnis erfolgreich über SendGrid verschickt.")
 
 
 # === MAIL mit local ===
 
-# def send_email_backup(json_string, filename):
-#     EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
-#     EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
-#     EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
-#     SMTP_SERVER = "smtp.gmail.com"
-#     SMTP_PORT = 587
+def send_email_backup(json_string, filename):
+    EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
+    EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+    EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
+    SMTP_SERVER = "smtp.gmail.com"
+    SMTP_PORT = 587
 
-#     msg = EmailMessage()
-#     msg["Subject"] = "📊 Visual Study Result JSON"
-#     msg["From"] = EMAIL_SENDER
-#     msg["To"] = EMAIL_RECEIVER
-#     msg.set_content("Backup der Studie im JSON-Anhang.")
+    msg = EmailMessage()
+    msg["Subject"] = "📊 Visual Study Result JSON"
+    msg["From"] = EMAIL_SENDER
+    msg["To"] = EMAIL_RECEIVER
+    msg.set_content("Backup der Studie im JSON-Anhang.")
 
-#     # JSON-Daten direkt anhängen
-#     msg.add_attachment(json_string.encode("utf-8"),
-#                        maintype="application",
-#                        subtype="json",
-#                        filename=filename)
+    # JSON-Daten direkt anhängen
+    msg.add_attachment(json_string.encode("utf-8"),
+                       maintype="application",
+                       subtype="json",
+                       filename=filename)
 
-#     #with open(json_path, "rb") as f:
-#     #    file_data = f.read()
-#     #    msg.add_attachment(file_data, maintype="application", subtype="json", filename=os.path.basename(json_path))
+    # with open(json_path, "rb") as f:
+    #    file_data = f.read()
+    #    msg.add_attachment(file_data, maintype="application", subtype="json", filename=os.path.basename(json_path))
 
-#     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
-#         smtp.starttls()
-#         smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
-#         smtp.send_message(msg)
-#         print("📬 Ergebnis per E-Mail gesendet.")
+    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
+        smtp.starttls()
+        smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
+        smtp.send_message(msg)
+        print("📬 Ergebnis per E-Mail gesendet.")
 
 # === START ===
 
