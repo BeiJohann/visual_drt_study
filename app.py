@@ -72,24 +72,27 @@ def submit():
     data = request.json
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     filename = f"result_{timestamp}.json"
-    local_path = os.path.join(RESULT_DIR, filename)
+
+        # Direkt JSON erzeugen
+    json_data = json.dumps(data, indent=2)
 
     # Lokal speichern
-    with open(local_path, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"✅ Gespeichert: {local_path}")
+    #local_path = os.path.join(RESULT_DIR, filename)
+    #with open(local_path, "w") as f:
+    #    json.dump(data, f, indent=2)
+    #print(f"✅ Gespeichert: {local_path}")
 
     # Per E-Mail senden
     try:
-        send_email_backup(local_path)
+        send_email_backup(json_data, filename)
     except Exception as e:
         print(f"⚠️ Fehler beim E-Mail-Versand: {e}")
-
+        return jsonify({"status": "error", "message": str(e)}), 500
     return jsonify({"status": "ok"})
 
 # === MAIL ===
 
-def send_email_backup(json_path):
+def send_email_backup(json_string, filename):
     EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
     EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
     EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
@@ -102,9 +105,15 @@ def send_email_backup(json_path):
     msg["To"] = EMAIL_RECEIVER
     msg.set_content("Backup der Studie im JSON-Anhang.")
 
-    with open(json_path, "rb") as f:
-        file_data = f.read()
-        msg.add_attachment(file_data, maintype="application", subtype="json", filename=os.path.basename(json_path))
+    # JSON-Daten direkt anhängen
+    msg.add_attachment(json_string.encode("utf-8"),
+                       maintype="application",
+                       subtype="json",
+                       filename=filename)
+
+    #with open(json_path, "rb") as f:
+    #    file_data = f.read()
+    #    msg.add_attachment(file_data, maintype="application", subtype="json", filename=os.path.basename(json_path))
 
     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
         smtp.starttls()
