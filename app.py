@@ -70,7 +70,7 @@ def load_data(dataset, projection):
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    os.makedirs(RESULT_DIR, exist_ok=True)
+    #os.makedirs(RESULT_DIR, exist_ok=True)
     data = request.json
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     filename = f"result_{timestamp}.json"
