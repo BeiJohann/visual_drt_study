@@ -41,32 +41,66 @@ def list_projections():
 @app.route("/data/<dataset>/<projection>")
 def load_data(dataset, projection):
     try:
-        proj_path = os.path.join(DATA_DIR, dataset, f"{projection}.npy")
-        label_path = os.path.join(DATA_DIR, dataset, "labels.npy")
+        dataset_dir = os.path.join(DATA_DIR, dataset)
+        proj_path = os.path.join(dataset_dir, f"{projection}.npy")
+        label_path = os.path.join(dataset_dir, "labels.npy")
 
         print(f" Loading: {proj_path}")
         print(f" Labels: {label_path}")
 
+        # Projektion laden
         X = np.load(proj_path).tolist()
-        # Load labels.npy as dict so we can access worst_point_index
+
+        # Labels robust laden
         labels_data = np.load(label_path, allow_pickle=True).item()
-        y = labels_data["labels"]
+        y = labels_data.get("labels", None)
+        if y is None:
+            raise ValueError(f"labels.npy for dataset '{dataset}' does not contain 'labels' key")
 
-        worst_idx = labels_data.get("worst_point_index", None)
-        if worst_idx is None or not isinstance(worst_idx, (int, np.integer)):
-            print(f"[WARNING] No valid worst_point_index found for dataset '{dataset}', projection '{projection}'")
-            worst_idx = None
-        elif worst_idx < 0 or worst_idx >= len(X):
-            print(f"[ERROR] worst_point_index {worst_idx} is out of range (0-{len(X)-1})")
-            worst_idx = None
+        # ----------------------
+        # E2/E3/E4 optional laden
+        # ----------------------
+        worst_idx = None
+        e2_path = os.path.join(dataset_dir, "E2_targets.npy")
+        if os.path.exists(e2_path):
+            try:
+                e2_data = np.load(e2_path, allow_pickle=True).item()
+                worst_idx = e2_data.get("worst_point_index")
+                if not isinstance(worst_idx, (int, np.integer)):
+                    worst_idx = None
+            except Exception as e:
+                print(f"[WARN] Failed to read E2_targets for {dataset}: {e}")
 
+        e3_data = None
+        e3_path = os.path.join(dataset_dir, "E3_targets.npy")
+        if os.path.exists(e3_path):
+            try:
+                e3_data = np.load(e3_path, allow_pickle=True).item()
+            except Exception as e:
+                print(f"[WARN] Failed to read E3_targets for {dataset}: {e}")
+
+        densest_cluster = None
+        e4_path = os.path.join(dataset_dir, "E4_targets.npy")
+        if os.path.exists(e4_path):
+            try:
+                e4_data = np.load(e4_path, allow_pickle=True).item()
+                densest_cluster = e4_data.get("densest_cluster")
+            except Exception as e:
+                print(f"[WARN] Failed to read E4_targets for {dataset}: {e}")
+        print(worst_idx,e3_data,densest_cluster)
+        # ----------------------
+        # JSON Response
+        # ----------------------
         return jsonify({
             "X": X,
             "y": y.tolist() if hasattr(y, "tolist") else y,
-            "worst_point_index": int(worst_idx) if worst_idx is not None else None
+            "worst_point_index": int(worst_idx) if worst_idx is not None else None,  # von E2
+            "nearest_pair": e3_data,              # Dict oder None (von E3)
+            "densest_cluster": densest_cluster    # int oder None (von E4)
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/submit", methods=["POST"])
 def submit():

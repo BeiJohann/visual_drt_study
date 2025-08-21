@@ -52,6 +52,12 @@ function ensurePauseButton() {
   return pauseBtn;
 }
 
+window.onbeforeunload = function(event) {
+    event.preventDefault();
+    event.returnValue = "Are you sure you want to leave this page? All data will be lost and you need to start over.";
+    return event.returnValue;
+};
+
 // === NEW PAUSE LOGIC ===
 let isPaused = false;
 let pauseOverlay = null;
@@ -349,6 +355,11 @@ function loadTrial() {
   const next = document.getElementById("next");
   if (next) {
     next.onclick = () => {
+          // 🚨 Check: wurde etwas ausgewählt?
+      if (selectedIndices.length === 0) {
+        alert("Bitte wählen Sie mindestens einen Punkt aus, bevor Sie weitergehen.");
+        return; // Stoppe hier, nicht weitermachen
+      }
       const duration = Date.now() - trialStartTime;
       selections.push({
         experiment: trial.experiment,
@@ -394,7 +405,9 @@ function drawScatterplot(data, experiment) {
     .attr("fill", d => {
       if (experiment === "E1" || experiment === "E4") return "grey";
       if (experiment === "E2") return d.index === highlightIndex ? "red" : "grey";
-      if (experiment === "E3") return d.label === targetLabel ? "red" : "grey";
+      if (data.nearest_pair && data.nearest_pair.nearest_cluster !== undefined) {
+          return d.label === data.nearest_pair.nearest_cluster ? "red" : "grey";
+        }
       return COLORS[d.label % COLORS.length];
     })
     .attr("fill-opacity", 0.6)
@@ -584,9 +597,22 @@ function showE5() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ results: selections, timestamp: new Date().toISOString(), participantCode })
-        }).then(() => {
-          const status = document.getElementById("status");
-          if (status) status.innerText = "✅ Final submission complete.";
+        }).then(res => {
+          if (res.ok) {
+            document.body.innerHTML = `
+              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; font-family:sans-serif;">
+                <h1 style="font-size:2em; margin-bottom:20px;">Thanks for participating!</h1>
+                <p style="font-size:1.2em;">Your responses have been recorded.</p>
+              </div>
+            `;
+          } else {
+            alert("Something went wrong while submitting. Please try again.");
+            nextBtn.disabled = false;
+          }
+        }).catch(err => {
+          console.error(err);
+          alert("Submission failed. Please try again.");
+          nextBtn.disabled = false;
         });
       };
     }
@@ -604,6 +630,15 @@ function loadStudy() {
         let trials = [];
         for (const dataset of Object.keys(data)) {
           for (const proj of data[dataset]) {
+                        // ❌ Unerwünschte Dateien rausfiltern
+            if (
+              proj === "labels" ||
+              proj.startsWith("E2_") ||
+              proj.startsWith("E3_") ||
+              proj.startsWith("E4_")
+            ) {
+              continue;
+            }
             trials.push({ dataset, projection: proj, experiment: key });
           }
         }
