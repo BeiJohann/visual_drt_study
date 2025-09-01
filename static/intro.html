@@ -3,13 +3,13 @@
 
   <p>
     This study investigates how humans perceive and interpret 2D scatter plots derived from high-dimensional data using various dimensionality reduction methods.
-    Your participation will help researchers understand which visual representations are most effective for identifying patterns and structures in complex data.
+    Your participation will help researchers understand which dimensionality reduction methods are most effective for identifying patterns and structures in complex data such as clusters.
   </p>
 
   <h3>Study Procedure</h3>
   <ul>
-    <li>The study will take approximately <b>30–40 minutes</b> in a single session.</li>
-    <li><b>Accuracy is more important than speed</b> — take your time to answer carefully.</li>
+    <li>The study will take approximately <b>40-50 minutes</b> in a single session.</li>
+    <li><b>Accuracy is more important than speed</b> — take your time to answer carefully. However, the time it takes you to complete the tasks is also recorded and evaluated.</li>
     <li>The study must be completed in one sitting, but short breaks are allowed (e.g., for restroom use).</li>
     <li>You can click the <b>Pause</b> button during the study to temporarily hide the screen and resume later.</li>
   </ul>
@@ -17,7 +17,7 @@
   <h3>What is a Scatter Plot?</h3>
   <p>
     A scatter plot is a two-dimensional visualization where each point represents one data item. The distance between points reflects their similarity in the original high-dimensional space:
-    similar items appear close together, while dissimilar items appear farther apart. We use the <a href="https://archive.ics.uci.edu/dataset/690/palmer+penguins-3"> Palmer penguin dataset</a> for all scatterplot in this introduction.
+    similar items appear close together, while dissimilar items appear farther apart. We use the <a href="https://archive.ics.uci.edu/dataset/690/palmer+penguins-3"> Palmer penguin dataset</a> for all scatterplots in this introduction.
   </p>
   <div style="text-align: center;">
     <img src="penguins_poorly_separated_color.png"
@@ -31,13 +31,14 @@
 
   <h3>What are Clusters?</h3>
   <p>
-    Clusters are groups of points that form visually coherent regions in the scatter plot. These clusters often represent similar items in the underlying data.
-    You can recognize them by looking for <b>dense regions</b> that are spatially separated from others. 
+    Clusters are groups of points that are closer to each other than to other points.
+    In practice, you can recognize them by looking for dense regions in the scatter plot that are spatially separated from others.
+    These clusters often represent similar items in the underlying data.
     Clusters can vary in:
     <ul>
       <li><b>Size</b>: the number of points in the cluster</li>
       <li><b>Density</b>: how closely packed the points are within a given area</li>
-      <li><b>Shape</b>: clusters can be round, elongated, or irregular</li>
+      <li><b>Shape</b>: clusters can be round, elongated, or even bent</li>
     </ul>
   </p>
   <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
@@ -66,7 +67,7 @@
   </p>
   <p>
     In this study, all points will be shown in <b>gray</b> without category labels. 
-    This means you will need to identify clusters based off their visible structure, without any hints from the original data classes. The examples shown are possible clusters selected from a human perception. 
+    This means you will need to identify clusters based on their visible structure, without any hints from the ground truth categories. The examples shown are possible clusters selected from a human perception. 
   </p>
 
     <!-- Vier Bilder in zwei Reihen -->
@@ -75,11 +76,13 @@
     <img src="penguins_poorly_separated_gray_selected.png" alt="penguins poorly separated gray_selected" style="width: 48%; max-width: 400px;">
   </div>
 
-  <h3>Using the Lasso Tool</h3>
+  <h3>Interactive Selection</h3>
   <ul>
+    <li>You will be asked to select clusters (group of points) using a lasso tool. Interactive selection with the lasso tool works as follows:</li>
     <li>Click and hold the left mouse button to start drawing a selection shape.</li>
     <li>Draw around the points you wish to select, then release the mouse button to complete the selection.</li>
     <li>Click the <b>Reset</b> button to clear your current selection.</li>
+    <li>When selecting clusters, you may sometimes accidentally include points you did not intend to select. You do not need to reset everything. You can simply draw a new lasso selection to <b>overwrite</b> your previous selection.</li>
     <li>A point can belong to only one cluster. If you lasso a point again, it will be removed from its previous cluster and assigned to the new one.</li>
     <li><b>Not all points have to be in a cluster</b> — leave unclustered points as they are if they don't clearly belong to a group.</li>
   </ul>
@@ -96,9 +99,18 @@
     <li>Rank all projections based on clarity and visual structure</li>
   </ul>
 
+    <h3>Important rules for all tasks</h3>
+  <ul>
+    <li><b>Outliers and very small groups (≤3 points)</b> do not count as clusters and should not be selected.</li>
+    <li><b>Always select the entire cluster</b>, not just the densest part of it.</li>
+    <li>If there appears to be only one cluster, select all points.</li>
+    <li>If a red point is shown, it must always be included in the selected cluster — even if it looks like an outlier.</li>
+    <li>Each task is independent. Do not try to be consistent with your previous selections.</li>
+    <li><b>Special case (Task 3):</b> If red points are spread across multiple regions, select the cluster that contains the largest number of red points.</li>
+  </ul>
 
   <p>
-    Each task block starts with an example to help you understand the task. The full study takes approximately <b>30–40 minutes</b>.
+    Each task block starts with an example to help you understand the task.
     Your responses will be recorded anonymously.
   </p>
 

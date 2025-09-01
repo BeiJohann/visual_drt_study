@@ -14,19 +14,35 @@ let participantCode = Math.floor(100000 + Math.random() * 900000);  // 6-digit I
 let blocks = {};
 const blockKeys = ["E1", "E2", "E3", "E4"];
 
-// 20 Farben (statt schemeCategory10)
+// 20 vivid, grey-free colours with good hue spacing
 const COLORS = [
-  "#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd",
-  "#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf",
-  "#393b79","#637939","#8c6d31","#843c39","#7b4173",
-  "#5254a3","#8ca252","#bd9e39","#ad494a","#a55194"
+  "#1f77b4", // blue
+  "#ff7f0e", // orange
+  "#2ca02c", // green
+  "#d62728", // red
+  "#9467bd", // purple
+  "#8c564b", // brown
+  "#e377c2", // pink
+  "#17becf", // teal
+  "#7f3c8d", // violet
+  "#11a579", // teal-green
+  "#3969ac", // steel blue
+  "#f2b701", // amber (kept dark enough for white bg)
+  "#e73f74", // magenta
+  "#80ba5a", // light green
+  "#e68310", // orange-brown
+  "#008695", // cyan-deep
+  "#cf1c90", // fuchsia
+  "#f97b72", // salmon
+  "#4b4b8f", // indigo
+  "#2d6a4f"  // forest green
 ];
 
 const TASKS = {
-  E1: "Task 1: Select all visually separate clusters using lasso. Multiple selections are allowed.",
-  E2: "Task 2: Select the cluster that contains the red-highlighted point.",
-  E3: "Task 3: Select the cluster that is closest to the red-highlighted cluster.",
-  E4: "Task 4: Select the densest cluster (the one with highest point density).",
+  E1: "Select all clusters using the lasso tool. Each lasso selection shall represent one cluster.",
+  E2: "You will see a red-highlighted point. Please select the cluster this point belongs to.",
+  E3: "One cluster will be highlighted. Select the cluster that is nearest to it.",
+  E4: "Select the cluster that is most compact or dense (most tightly packed points).",
   E5: "Task 5: Rank all projections from 1 (best) to 10 (worst). Same ranks allowed."
 };
 
@@ -126,7 +142,9 @@ function updateProgressCounter() {
   if (!el) return;
   const total = totalTrialsPlanned();
   const current = Math.min(trialGlobalIndex + 1, total);
-  el.innerText = `${current} of ${total}`;
+  // E5 wird als eigener Schritt gezählt
+  const showCurrent = blockIndex >= blockKeys.length ? total : current;
+  el.innerText = `${showCurrent} of ${total}`;
 }
 
 // ===== App-Start =====
@@ -217,7 +235,7 @@ function showWelcome() {
   if (e5c) e5c.style.display = "none";
   if (td) {
     td.innerHTML = `
-      <p><b>Your participant code is:</b> <code>${participantCode}</code> — please remember or save this!</p>
+      <p><b>Your participant code is:</b> <code>${participantCode}</code> </p>
       <p>Click <b>Next</b> to continue to the task blocks. Each task block includes an example first.</p>
     `;
   }
@@ -236,10 +254,10 @@ function showBlockIntro() {
 
   const exp = blockKeys[blockIndex];
   const introText = {
-    E1: `<h3>Task 1: Cluster Identification</h3><p>You will select all clearly visible clusters. Use the lasso tool to draw around points. Multiple selections are allowed.</p>`,
-    E2: `<h3>Task 2: Target Cluster</h3><p>You will see a red-highlighted point. Please select the cluster this point belongs to.</p>`,
-    E3: `<h3>Task 3: Closest Cluster</h3><p>One cluster will be highlighted. Select the cluster that is nearest to it.</p>`,
-    E4: `<h3>Task 4: Densest Cluster</h3><p>Select the cluster that is most compact or dense (most tightly packed points).</p>`
+    E1: `<h3>Task 1: Cluster Identification</h3><p>Select all clusters using the lasso tool. Each lasso selection shall represent one cluster.</p>`,
+    E2: `<h3>Task 2: Membership Identification</h3><p>You will see a red-highlighted point. Please select the cluster this point belongs to.</p>`,
+    E3: `<h3>Task 3: Distance Comparison</h3><p>One cluster will be highlighted. Select the cluster that is nearest to it.</p>`,
+    E4: `<h3>Task 4: Density Comparison</h3><p>Select the cluster that is most compact or dense (most tightly packed points).</p>`
   }[exp];
 
   const td = document.getElementById("task-desc");
@@ -291,18 +309,13 @@ function showSanityCheck(experiment) {
   const circles = svg.selectAll("circle").data(all).enter()
     .append("circle")
     .attr("cx", d => d.x).attr("cy", d => d.y).attr("r", 4)
-    .attr("fill", (d) => "grey")
+    .attr("fill", "grey")
     .attr("fill-opacity", 0.7)
     .attr("stroke", "none");
 
-  // Sanity-Task-Text (englisch, konsistent mit TASKS)
-  const td = document.getElementById("task-desc");
-  if (td) td.innerHTML =
-    `<h3>Example: ${TASKS[experiment]}</h3><p>Use the lasso tool on the cluster(s) as instructed. After lassoing, click <b>Next</b> to continue.</p>`;
-
   // Highlight passend zur Aufgabe
   if (experiment === "E2") {
-    const redIdx = Math.floor(Math.random() * all.length);
+    const redIdx = 80;
     d3.select(circles.nodes()[redIdx]).attr("fill", "red").attr("fill-opacity", 0.9);
   } else if (experiment === "E3") {
     all.forEach((p, i) => {
@@ -311,21 +324,59 @@ function showSanityCheck(experiment) {
   }
 
   setupUnifiedLasso(svg, all, circles, { multiSelect: experiment === "E1" });
-
+  
   const next = document.getElementById("next");
   if (next) {
     next.onclick = () => {
-      selections.push({
-        experiment: experiment + "_sanity",
-        selected: selectedIndices.map(g => g.slice())
-      });
-      currentIndex = 0;
-      trialGlobalIndex++;
-      updateProgressCounter();
-      loadTrial();
+      let correct = false;
+
+      if (experiment === "E1") {
+        // Erwartet: genau 2 Gruppen (0–49 und 50–99)
+        if (selectedIndices.length === 2) {
+          const groupA = new Set([...Array(50).keys()]);        
+          const groupB = new Set([...Array(50).keys()].map(i => i + 50)); 
+
+          const selGroups = selectedIndices.map(g => new Set(g));
+          const matchA = selGroups.some(g => groupA.size === g.size && [...groupA].every(i => g.has(i)));
+          const matchB = selGroups.some(g => groupB.size === g.size && [...groupB].every(i => g.has(i)));
+
+          correct = matchA && matchB;
+        }
+      } else if (experiment === "E2") {
+        // Erwartet: Punkte 50–149
+        const required = new Set([...Array(100).keys()].map(i => i + 50));
+        const selected = new Set(selectedIndices.flat());
+        correct = required.size === selected.size && [...required].every(i => selected.has(i));
+      } else if (experiment === "E3") {
+        // Erwartet: Punkte 100–149
+        const required = new Set([...Array(50).keys()].map(i => i + 100));
+        const selected = new Set(selectedIndices.flat());
+        correct = required.size === selected.size && [...required].every(i => selected.has(i));
+      } else if (experiment === "E4") {
+        // Erwartet: Punkte 0–49
+        const required = new Set([...Array(50).keys()]);
+        const selected = new Set(selectedIndices.flat());
+        correct = required.size === selected.size && [...required].every(i => selected.has(i));
+      }
+
+      if (correct) {
+        selections.push({
+          experiment: experiment + "_sanity",
+          selected: selectedIndices.map(g => g.slice())
+        });
+        currentIndex = 0;
+        trialGlobalIndex++;
+        updateProgressCounter();
+        loadTrial();
+      } else {
+        alert("❌ That was not correct. Please try again!");
+        selectedIndices = []; // Reset Selections
+        svg.selectAll("circle").attr("stroke", null).attr("stroke-width", null); // Reset visuals
+      }
     };
   }
 }
+
 
 function loadTrial() {
   const exp = blockKeys[blockIndex];
@@ -356,10 +407,10 @@ function loadTrial() {
   if (next) {
     next.onclick = () => {
           // 🚨 Check: wurde etwas ausgewählt?
-      if (selectedIndices.length === 0) {
-        alert("Bitte wählen Sie mindestens einen Punkt aus, bevor Sie weitergehen.");
+      /*if (selectedIndices.length === 0) {
+        alert("Please select at least one point before continuing.");
         return; // Stoppe hier, nicht weitermachen
-      }
+      }*/
       const duration = Date.now() - trialStartTime;
       selections.push({
         experiment: trial.experiment,
@@ -439,7 +490,7 @@ function setupUnifiedLasso(svg, points, circles, opts = { multiSelect: true }) {
 
   function repaint() {
     // Alle Strokes löschen
-    circles.attr("stroke", null).attr("stroke-width", null);
+    circles.attr("stroke", "none").attr("stroke-width", 0);
     // Gruppen farbig umranden
     selectedIndices.forEach((group, gi) => {
       const color = COLORS[gi % COLORS.length];
@@ -520,11 +571,12 @@ function showE5() {
   if (nextBtn) nextBtn.style.display = "inline-block";
 
   function renderPage() {
-    div.innerHTML = `<h3>Dataset: ${datasets[currentPage]}</h3>`;
+    div.innerHTML = `<h3>Please rank the following projections</h3>`;
     
     const projections = [...new Set(Object.values(blocks).flat()
       .filter(t => t.dataset === datasets[currentPage])
       .map(t => t.projection))];
+    projections.sort(() => Math.random() - 0.5);
 
     const grid = document.createElement("div");
     grid.style.display = "grid";
