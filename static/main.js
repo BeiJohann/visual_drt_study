@@ -12,6 +12,9 @@ let trialGlobalIndex = 0;
 let trialStartTime = null;
 let participantCode = Math.floor(100000 + Math.random() * 900000);  // 6-digit ID
 let blocks = {};
+let surveyDataGlobal = null;
+let e5PageIndex = 0;
+let e5TotalPages = 8;
 const blockKeys = ["E1", "E2", "E3", "E4"];
 
 // 20 vivid, grey-free colours with good hue spacing
@@ -43,14 +46,14 @@ const TASKS = {
   E2: "You will see a red-highlighted point. Please select the cluster this point belongs to.",
   E3: "One cluster will be highlighted. Select the cluster that is nearest to it.",
   E4: "Select the cluster that is most compact or dense (most tightly packed points).",
-  E5: "Task 5: Rank all projections from 1 (best) to 10 (worst). Same ranks allowed."
+  E5: "Task 5: Rank all projections from 1 (best) to 10 (worst) accordingly to their cluster separation perfomance. Same ranks allowed."
 };
 
 // ===== Helpers =====
 function totalTrialsPlanned() {
   // Summe aller Trials in E1..E4 + 1 Sanity pro Block
   const trials = blockKeys.reduce((s, k) => s + (blocks[k]?.length || 0), 0);
-  return trials + blockKeys.length; // + Sanity-Checks
+  return trials + blockKeys.length + e5TotalPages; // + Sanity-Checks +e5
 }
 
 function ensurePauseButton() {
@@ -141,10 +144,18 @@ function updateProgressCounter() {
   const el = document.getElementById("progress-counter");
   if (!el) return;
   const total = totalTrialsPlanned();
-  const current = Math.min(trialGlobalIndex + 1, total);
-  // E5 wird als eigener Schritt gezählt
-  const showCurrent = blockIndex >= blockKeys.length ? total : current;
-  el.innerText = `${showCurrent} of ${total}`;
+
+  let current;
+  if (blockIndex >= blockKeys.length) {
+    // Wir sind in E5 → trialGlobalIndex bleibt stehen, nur e5PageIndex zählt
+    const trialsBeforeE5 = total - e5TotalPages; 
+    current = trialsBeforeE5 + e5PageIndex + 1;
+  } else {
+    // Normaler Fortschritt
+    current = Math.min(trialGlobalIndex + 1, total);
+  }
+
+  el.innerText = `${Math.min(current, total)} of ${total}`;
 }
 
 // ===== App-Start =====
@@ -177,27 +188,50 @@ window.addEventListener("DOMContentLoaded", () => {
     pauseBtn.style.display = "none"; // erst nach Welcome anzeigen
   }
 
-  // Intro laden (Fallback: direkt start wenn kein #start-btn im Intro existiert)
-  fetch("intro.html")
-    .then(res => res.ok ? res.text() : Promise.reject("intro.html not found"))
+  // Zuerst Survey laden
+  fetch("survey.html")
+    .then(res => res.ok ? res.text() : Promise.reject("survey.html not found"))
     .then(html => {
       const td = document.getElementById("task-desc");
       if (td) td.innerHTML = html;
 
-      const startBtn = document.getElementById("start-btn");
-      if (startBtn) {
-        startBtn.addEventListener("click", () => loadStudy());
-      } else {
-        // Fallback für dein aktuelles index.html ohne #start-btn
-        loadStudy();
+      const form = document.getElementById("survey-form");
+      if (form) {
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const surveyData = {};
+          formData.forEach((value, key) => {
+            surveyData[key] = value;
+          });
+
+          // global speichern
+          surveyDataGlobal = surveyData;
+
+          console.log("✅ Survey responses saved:", surveyData);
+
+          // Danach Intro laden
+          loadIntro();
+        });
       }
-    })
-    .catch(() => {
-      // Fallback falls es keine intro.html gibt
-      const td = document.getElementById("task-desc");
-      if (td) td.innerHTML = "<p>Welcome! Click <b>Next</b> to begin.</p>";
-      loadStudy();
+
     });
+
+  function loadIntro() {
+    fetch("intro.html")
+      .then(res => res.ok ? res.text() : Promise.reject("intro.html not found"))
+      .then(html => {
+        const td = document.getElementById("task-desc");
+        if (td) td.innerHTML = html;
+
+        const startBtn = document.getElementById("start-btn");
+        if (startBtn) {
+          startBtn.addEventListener("click", () => loadStudy());
+        } else {
+          loadStudy(); // Fallback
+        }
+      });
+  }
 
   // Reset / Submit Handler nur setzen, wenn Elemente existieren
   if (reset) {
@@ -211,7 +245,7 @@ window.addEventListener("DOMContentLoaded", () => {
       fetch("/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ results: selections, timestamp: new Date().toISOString(), participantCode })
+        body: JSON.stringify({ results: selections, survey: surveyDataGlobal,  timestamp: new Date().toISOString(), participantCode })
       }).then(() => {
         const st = document.getElementById("status");
         if (st) st.innerText = "✅ Results saved.";
@@ -324,7 +358,7 @@ function showSanityCheck(experiment) {
   }
 
   setupUnifiedLasso(svg, all, circles, { multiSelect: experiment === "E1" });
-  
+
   const next = document.getElementById("next");
   if (next) {
     next.onclick = () => {
@@ -369,7 +403,7 @@ function showSanityCheck(experiment) {
         updateProgressCounter();
         loadTrial();
       } else {
-        alert("❌ That was not correct. Please try again!");
+        alert("That was not correct. Read the task and try it again.");
         selectedIndices = []; // Reset Selections
         svg.selectAll("circle").attr("stroke", null).attr("stroke-width", null); // Reset visuals
       }
@@ -549,6 +583,7 @@ function setupUnifiedLasso(svg, points, circles, opts = { multiSelect: true }) {
 // === RESET & SUBMIT (Handler werden im DOMContentLoaded gesetzt) ===
 
 // === E5 FINAL RANKING ===
+
 function showE5() {
   const viz = document.getElementById("viz");
   if (viz) viz.style.display = "none";
@@ -563,7 +598,9 @@ function showE5() {
   }
 
   const datasets = [...new Set(Object.values(blocks).flat().map(t => t.dataset))];
-  let currentPage = 0;
+  datasets.sort(() => Math.random() - 0.5);
+
+  e5PageIndex = 0;
   let rankings = {};
   datasets.forEach(ds => { rankings[ds] = {}; });
 
@@ -574,9 +611,9 @@ function showE5() {
     div.innerHTML = `<h3>Please rank the following projections</h3>`;
     
     const projections = [...new Set(Object.values(blocks).flat()
-      .filter(t => t.dataset === datasets[currentPage])
+      .filter(t => t.dataset === datasets[e5PageIndex])
       .map(t => t.projection))];
-    projections.sort(() => Math.random() - 0.5);
+    projections.sort(() => Math.random() - 0.5); // Randomisierung pro Seite
 
     const grid = document.createElement("div");
     grid.style.display = "grid";
@@ -595,7 +632,7 @@ function showE5() {
         .attr("width", 200)
         .attr("height", 200);
       
-      fetch(`/data/${datasets[currentPage]}/${proj}`)
+      fetch(`/data/${datasets[e5PageIndex]}/${proj}`)
         .then(res => res.json())
         .then(data => {
           const width = 200, height = 200;
@@ -622,9 +659,9 @@ function showE5() {
       const select = document.createElement("select");
       select.innerHTML = `<option value="">Rank</option>` + 
         Array.from({length: 10}, (_,i) => `<option value="${i+1}">${i+1}</option>`).join("");
-      select.value = rankings[datasets[currentPage]][proj] || "";
+      select.value = rankings[datasets[e5PageIndex]][proj] || "";
       select.addEventListener("change", () => {
-        rankings[datasets[currentPage]][proj] = parseInt(select.value);
+        rankings[datasets[e5PageIndex]][proj] = parseInt(select.value);
       });
 
       cell.appendChild(document.createElement("br"));
@@ -634,11 +671,15 @@ function showE5() {
 
     div.appendChild(grid);
 
+    // Fortschritt updaten
+    updateProgressCounter();
+
     // Button-Logik
-    if (currentPage < datasets.length - 1) {
+    if (e5PageIndex < datasets.length - 1) {
       nextBtn.innerText = "Next";
       nextBtn.onclick = () => {
-        currentPage++;
+        e5PageIndex++;
+        trialGlobalIndex++; // zählt E5-Seiten als Trials
         renderPage();
       };
     } else {
