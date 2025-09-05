@@ -17,6 +17,18 @@ let e5PageIndex = 0;
 let e5TotalPages = 8;
 const blockKeys = ["E1", "E2", "E3", "E4"];
 
+// === PROLIFIC: URL-Parameter erfassen (NEU) ===
+const _params = new URLSearchParams(window.location.search);
+const prolificInfo = {
+  pid: _params.get("PROLIFIC_PID") || _params.get("prolific_pid") || null,
+  studyId: _params.get("STUDY_ID") || _params.get("study_id") || null,
+  sessionId: _params.get("SESSION_ID") || _params.get("session_id") || null,
+  preview: ["1", "true", "TRUE"].includes((_params.get("preview") || "").trim())
+};
+// ← HIER deinen echten Completion-Code eintragen:
+const PROLIFIC_COMPLETION_URL = "https://app.prolific.com/submissions/complete?cc=REPLACE_WITH_YOUR_CODE";
+// === ENDE PROLIFIC-Setup ===
+
 // 20 vivid, grey-free colours with good hue spacing
 const COLORS = [
   "#1f77b4", // blue
@@ -30,7 +42,7 @@ const COLORS = [
   "#7f3c8d", // violet
   "#11a579", // teal-green
   "#3969ac", // steel blue
-  "#f2b701", // amber (kept dark enough for white bg)
+  "#f2b701", // amber 
   "#e73f74", // magenta
   "#80ba5a", // light green
   "#e68310", // orange-brown
@@ -267,12 +279,16 @@ function showWelcome() {
 
   if (viz) viz.style.display = "none";
   if (e5c) e5c.style.display = "none";
-  if (td) {
-    td.innerHTML = `
-      <p><b>Your participant code is:</b> <code>${participantCode}</code> </p>
-      <p>Click <b>Next</b> to continue to the task blocks. Each task block includes an example first.</p>
-    `;
+
+  // === PROLIFIC: Welcome-Text anpassen (NEU) ===
+  let welcomeHtml = `<p>Click <b>Next</b> to continue to the task blocks. Each task block includes an example first.</p>`;
+  if (!prolificInfo.pid) {
+    // Nur wenn NICHT Prolific → optionalen Teilnehmercode zeigen
+    welcomeHtml = `<p><b>Your participant code is:</b> <code>${participantCode}</code></p>` + welcomeHtml;
+  } else {
+    welcomeHtml = `<p>You are participating via Prolific (<code>${prolificInfo.pid}</code>).</p>` + welcomeHtml;
   }
+  if (td) td.innerHTML = welcomeHtml;
   if (next) { next.style.display = "inline-block"; next.onclick = () => showBlockIntro(); }
   if (reset) reset.style.display = "inline-block";
   if (submit) submit.style.display = "inline-block";
@@ -580,8 +596,6 @@ function setupUnifiedLasso(svg, points, circles, opts = { multiSelect: true }) {
   });
 }
 
-// === RESET & SUBMIT (Handler werden im DOMContentLoaded gesetzt) ===
-
 // === E5 FINAL RANKING ===
 
 function showE5() {
@@ -686,12 +700,28 @@ function showE5() {
       nextBtn.innerText = "Submit Rankings";
       nextBtn.onclick = () => {
         selections.push({ experiment: "E5", preference: rankings });
+        // === PROLIFIC: Ergebnisse inkl. Survey & Prolific-Felder senden (NEU) ===
+        const payload = {
+          results: selections,
+          survey: surveyDataGlobal || {},
+          prolific: prolificInfo,
+          timestamp: new Date().toISOString(),
+          participantCode
+        };
+
         fetch("/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ results: selections, timestamp: new Date().toISOString(), participantCode })
         }).then(res => {
           if (res.ok) {
+            // === PROLIFIC: Redirect auf Completion-URL, falls über Prolific (NEU) ===
+            if (prolificInfo.pid && PROLIFIC_COMPLETION_URL.includes("complete?cc=")) {
+              window.location.replace(PROLIFIC_COMPLETION_URL);
+              return;
+            }
+            // Fallback: lokale „Danke“-Seite
+
             document.body.innerHTML = `
               <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; font-family:sans-serif;">
                 <h1 style="font-size:2em; margin-bottom:20px;">Thanks for participating!</h1>
