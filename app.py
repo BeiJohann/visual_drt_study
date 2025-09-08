@@ -113,10 +113,10 @@ def submit():
     json_data = json.dumps(data, indent=2)
 
     # Lokal speichern
-    #local_path = os.path.join(RESULT_DIR, filename)
-    #with open(local_path, "w") as f:
-    #    json.dump(data, f, indent=2)
-    #print(f"✅ Gespeichert: {local_path}")
+    local_path = os.path.join(RESULT_DIR, filename)
+    with open(local_path, "w") as f:
+        json.dump(data, f, indent=2)
+    print(f"✅ Gespeichert: {local_path}")
 
     # Per E-Mail senden
 
@@ -128,56 +128,6 @@ def submit():
 
     return jsonify({"status": "ok"})
 
-
-# # === MAIL mit SendGrid ===
-
-# def send_email_backup(json_content, filename):
-#     SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-#     EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
-#     EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
-
-#     if not SENDGRID_API_KEY:
-#         raise ValueError("SENDGRID_API_KEY not set in environment")
-
-#     # SendGrid API Endpoint
-#     url = "https://api.sendgrid.com/v3/mail/send"
-
-#     headers = {
-#         "Authorization": f"Bearer {SENDGRID_API_KEY}",
-#         "Content-Type": "application/json"
-#     }
-
-#     # Base64-Encoding für Anhang
-#     import base64
-#     encoded_file = base64.b64encode(json_content.encode()).decode()
-
-#     payload = {
-#         "personalizations": [
-#             {
-#                 "to": [{"email": EMAIL_RECEIVER}],
-#                 "subject": "📊 Visual Study Result JSON"
-#             }
-#         ],
-#         "from": {"email": EMAIL_SENDER},
-#         "content": [
-#             {"type": "text/plain", "value": "Backup der Studie im JSON-Anhang."}
-#         ],
-#         "attachments": [
-#             {
-#                 "content": encoded_file,
-#                 "type": "application/json",
-#                 "filename": filename,
-#                 "disposition": "attachment"
-#             }
-#         ]
-#     }
-
-#     response = requests.post(url, headers=headers, json=payload)
-#     print("SendGrid response:", response.status_code, response.text)  # Debug
-#     if response.status_code >= 400:
-#         raise RuntimeError(f"SendGrid API error: {response.status_code} {response.text}")
-#     else:
-#         print("📬 Ergebnis erfolgreich über SendGrid verschickt.")
 
 
 # === MAIL mit local ===

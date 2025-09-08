@@ -10,6 +10,8 @@ let currentLassoColorIndex = 0;
 let highlightIndex = -1;
 let trialGlobalIndex = 0;
 let trialStartTime = null;
+let pauseStartTime = null;
+let totalPausedTime = 0;
 let participantCode = Math.floor(100000 + Math.random() * 900000);  // 6-digit ID
 let blocks = {};
 let surveyDataGlobal = null;
@@ -137,19 +139,25 @@ function createPauseOverlay() {
 }
 
 function setPaused(state) {
-  if (state === isPaused) return; // no-op
+  if (state === isPaused) return;
   isPaused = state;
-
-  // Ensure overlay exists
   createPauseOverlay();
-
-  // Show overlay when paused; hide when resumed
   pauseOverlay.style.display = state ? "flex" : "none";
 
-  // Keep UI visible underneath; we only gate interactions via isPaused and overlay cover.
-  // (Lasso handlers and other interactions already check isPaused.)
+  if (state) {
+    // just paused
+    pauseStartTime = Date.now();
+  } else {
+    // just resumed
+    if (pauseStartTime) {
+      totalPausedTime += Date.now() - pauseStartTime;
+      pauseStartTime = null;
+    }
+  }
+
   console.log(state ? "🛑 Paused" : "▶️ Resumed");
 }
+
 // === END NEW PAUSE LOGIC ===
 
 function updateProgressCounter() {
@@ -450,6 +458,8 @@ function loadTrial() {
     .then(data => {
       dataGlobal = data;
       trialStartTime = Date.now();
+      totalPausedTime = 0;
+      pauseStartTime = null;
       drawScatterplot(data, trial.experiment);
     });
 
@@ -457,11 +467,11 @@ function loadTrial() {
   if (next) {
     next.onclick = () => {
           // 🚨 Check: wurde etwas ausgewählt?
-      /*if (selectedIndices.length === 0) {
+      if (selectedIndices.length === 0) {
         alert("Please select at least one point before continuing.");
         return; // Stoppe hier, nicht weitermachen
-      }*/
-      const duration = Date.now() - trialStartTime;
+      }
+      const duration = Date.now() - trialStartTime - totalPausedTime;
       selections.push({
         experiment: trial.experiment,
         dataset: trial.dataset,
@@ -712,7 +722,7 @@ function showE5() {
         fetch("/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ results: selections, timestamp: new Date().toISOString(), participantCode })
+          body: JSON.stringify({ results: selections, survey: surveyDataGlobal, timestamp: new Date().toISOString(), participantCode })
         }).then(res => {
           if (res.ok) {
             // === PROLIFIC: Redirect auf Completion-URL, falls über Prolific (NEU) ===
@@ -729,8 +739,9 @@ function showE5() {
               </div>
             `;
           } else {
-            alert("Something went wrong while submitting. Please try again.");
+            alert("Submission failed. Please try again.");
             nextBtn.disabled = false;
+
           }
         }).catch(err => {
           console.error(err);
